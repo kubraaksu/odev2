@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int binarysearchl(int b[],int ara,int uzunluk){
+	int bas = 0;
+	int son =uzunluk-1; ;
+	int j;
+	int k=0;
+	while (bas <= son)
+	{
+		j = (bas + son)/2;
+  		if (b[j] == ara)
+    	{
+        	printf("%d . defada bulundu", k);
+        	return ara;
+    	}
+  		else if (b[j] > ara)
+    		son = j - 1;
+    		
+  		else
+    		bas = j + 1;
+    	k++;
+    		
+	}
+	return -1;
+		
+}
+int main(int argc, char *argv[]) {
+	
+	int boyut,sayi,aranan;
+	printf("dizinin boyutu  ne kadar olsun");
+	scanf("%d",&boyut);
+	int a[boyut];
+	srand(time(NULL));
+	int i;
+	for(i=0;i<boyut;i++){
+		sayi=rand()%1000;
+		a[i]=sayi;
+	}
+	for(i=0;i<boyut;i++){
+		printf("%d\n",a[i]);
+	}
+	printf("aranan degeri gir");
+	scanf("%d",&aranan);
+	time_t start,end;
+  	time (&start);
+  
+	elemanbul(a,aranan,boyut);
+	time (&end);
+	
+	int fark;
+	fark = difftime(end, start);
+	
+	 printf("%4lf saniye surdu\n",fark);
+ 
+	return 0;
+	
+}
